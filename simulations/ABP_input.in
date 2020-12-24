@@ -1,0 +1,29 @@
+variable phi equal 1
+variable L equal 150
+variable seed equal 1325987654
+
+units           lj
+dimension       2
+atom_style      active
+atom_modify map array sort 0 2.0
+
+region          box block 0 ${L} 0 ${L} -0.1 0.1
+
+variable N equal floor((${L}*${L}*${phi}))
+
+create_box      1 box
+create_atoms    1 random ${N} ${seed} box
+
+mass            * 1.0
+
+
+pair_style      yukawa 4.0 2.5 # Yukawa with screening length 4.0, cutoff 2.5
+pair_coeff      * * 50.0
+pair_modify     shift yes
+
+neighbor        0.3 bin
+neigh_modify    delay 0 every 1 check yes
+
+minimize 1.0e-4 1.0e-6 1000 100000
+
+compute 9 all pe
