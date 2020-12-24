@@ -142,7 +142,7 @@ int main(int narg, char **arg)
    sprintf(inputline,"timestep %f",dt);
    if (lammps==1) lmp->input->one(inputline);
 
-   sprintf(inputline,"fix       1 all bd_ABP 1.0 %f %f %f %f %li", gamma, tau, Pe, frac, seed2);  
+   sprintf(inputline,"fix       1 all bd_AOUP 1.0 %f %f %f %f %li", gamma, tau, Pe, frac, seed2);  
    if (lammps==1) lmp->input->one(inputline);
 
    int natoms = static_cast<int> (lmp->atom->natoms);
