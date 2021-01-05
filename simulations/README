@@ -1,3 +1,3 @@
 Add the atom.cpp, atom.h, fix_bd_AOUP.cpp, fix_bd_AOUP.h to the lammps src folder, and compile lammps as a library.
-Copy Lammps_drivensystem_run.cpp, AOUP_input.in and Makefile to the simulation folder, and type make to compile the file. 
+Copy Lammps_drivensystem_run.cpp, AOUP_input.in and Makefile to the simulation folder, and type "make" to compile the file the cpp file. 
 May need to copy liblammps.a into the same folder as above.
