@@ -6,7 +6,7 @@ import sys
 # The parameter i selects which Pe to pre-process the coordinates for, from the list of desired Pe's.
 i = int(sys.argv[1])
 
-
+L = 25
 num_snapshots = 20
 nparticles = 312
 ndistances = 25
@@ -19,23 +19,27 @@ TA = ['0', '3', '6', '9', '12', '15', '18', '21', '24', '27', '30']
 Pe = ['0.00','1.73','2.45', '3.00', '3.46', '3.87', '4.24', '4.58', '4.90', '5.20', '5.48']
 
 def get_ndistances_in_polar_coord(coord, nparticles, ndistances):
+    # This function returns, for a given set of particles, the distances from each particles to its neighbors and the angles \theta between them.
+    # In other words, for each particle, the vectors pointing from that particle to all its neighbors is transformed to polar coordinates.
+    # The output has dimension [2*Nparticles, Nparticles] and lists the distances first, and angles \theta second.
+    
     output = np.zeros((nparticles*2, ndistances))
     for i in range(len(coord)):
         output_local = np.zeros((2, nparticles))
         index = 0
         for j in range(len(coord)):
             if j != i:
-                if coord[i][0]-coord[j][0] < -12.5:
-                    coord_x = coord[i][0]-coord[j][0] + 25
-                elif coord[i][0]-coord[j][0] > 12.5:
-                    coord_x = coord[i][0]-coord[j][0] - 25
+                if coord[i][0]-coord[j][0] < -L/2:
+                    coord_x = coord[i][0]-coord[j][0] + L
+                elif coord[i][0]-coord[j][0] > L/2:
+                    coord_x = coord[i][0]-coord[j][0] - L
                 else:
                     coord_x = coord[i][0]-coord[j][0]
 
-                if coord[i][1]-coord[j][1] < -12.5:
-                    coord_y = coord[i][1]-coord[j][1] + 25
-                elif coord[i][1]-coord[j][1] > 12.5:
-                    coord_y = coord[i][1]-coord[j][1] - 25
+                if coord[i][1]-coord[j][1] < -L/2:
+                    coord_y = coord[i][1]-coord[j][1] + L
+                elif coord[i][1]-coord[j][1] > L/2:
+                    coord_y = coord[i][1]-coord[j][1] - L
                 else:
                     coord_y = coord[i][1]-coord[j][1]
 
