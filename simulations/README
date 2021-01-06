@@ -1,7 +1,7 @@
 Add atom.cpp, atom.h, fix_bd_AOUP.cpp, fix_bd_AOUP.h, atom_vec_active.cpp and atom_vec_active.h to the lammps src folder.
-Compile lammps as a library (for example: "make mpi mode=lib" in src folder)
+Compile lammps as a library (for example: "make mpi mode=lib" in src folder).
 Copy Lammps_drivensystem_run.cpp, AOUP_input.in and Makefile to a folder where you want to run the simulations.
-Replace the path to lampps in the Makefile file
+Replace the path to lampps in the Makefile file.
 Type "make" to compile Lammps_drivensystem_run.cpp. 
 Run simulation as "./Lammps_drivensystem_run.out 1 AOUP_input.in tau Pe gamma"
 
