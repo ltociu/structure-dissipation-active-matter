@@ -1,0 +1,7 @@
+Multiple trials at each value of T_A should be run using the files in the simulations folder. We run 300 trials.
+Each simulations will output a certain number of snapshots (20 in our work).
+Each snapshot can be pre-processed into the input for machine learning with the script Preprocess_data_one_TA.py.
+The preprocessed data at each TA is expected to be concatenated for all trials and form a large input numpy array. In our case
+this array has a leading size of 20*300 = 6000.  The code for this concatenation is not provided. The resulting files should be saved 
+as X_TA_$TA.npy and  Y_TA_$TA.npy, where $TA is a variable that assumes the values of TA for which the machine learning is to be done.
+Once these files are done, the script Cont_conv_train_plot_results.ipynb can be run to train the network and plot results.
