@@ -1,6 +1,6 @@
 variable phi equal 0.5
-variable L equal 100
-variable seed equal 1325987654  #should be changed from simulation to simulation
+variable L equal 25
+variable seed equal 132598765  #should be changed from simulation to simulation
 
 units           lj
 dimension       2
